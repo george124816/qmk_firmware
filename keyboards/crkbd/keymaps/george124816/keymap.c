@@ -45,15 +45,16 @@ enum custom_keycodes {
 #define LGS_9 LGUI(LSFT(KC_9))
 #define LGS_0 LGUI(LSFT(KC_0))
 
+#define CEDILLA RAG(KC_COMM)
 // Tap Dance declarations
 enum {
-    TD_ESC_CAPS,
+    TD_ESC_CAPS
 };
 
 // Tap Dance definitions
 qk_tap_dance_action_t tap_dance_actions[] = {
     // Tap once for Escape, twice for Caps Lock
-    [TD_ESC_CAPS] = ACTION_TAP_DANCE_DOUBLE(KC_ESC, KC_CAPS),
+    [TD_ESC_CAPS] = ACTION_TAP_DANCE_DOUBLE(KC_ESC, KC_CAPS)
 };
 
 
@@ -74,7 +75,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [1] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-       KC_TAB,    KC_Q, XXXXXXX, XXXXXXX, KC_LGUI, XXXXXXX,                      XXXXXXX, XXXXXXX, KC_HOME,  KC_END, KC_PGUP, KC_BSPC,
+       KC_TAB,    KC_Q, XXXXXXX, XXXXXXX, KC_LGUI, XXXXXXX,                       KC_F15,  KC_F16, KC_HOME,  KC_END, KC_PGUP, KC_BSPC,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_LCTL, XXXXXXX, KC_LALT, KC_LSFT, KC_LCTL, XXXXXXX,                      KC_LEFT, KC_DOWN,   KC_UP,KC_RIGHT, KC_PGDN, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
@@ -86,11 +87,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [2] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-       KC_TAB, KC_EXLM,   KC_AT, KC_HASH,  KC_DLR, KC_PERC,                      KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_BSPC,
+       KC_TAB, KC_EXLM,   KC_AT, KC_HASH,  KC_DLR, KC_PERC,                      KC_LPRN, KC_AMPR, KC_ASTR, KC_CIRC, KC_RPRN, KC_BSPC,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LCTL, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      KC_UNDS,  KC_EQL, KC_LBRC, KC_RBRC, KC_BSLS,  KC_GRV,
+      KC_LCTL, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      KC_LBRC, KC_MINS, KC_UNDS, KC_PIPE, KC_RBRC,  KC_GRV,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LSFT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      KC_MINS, KC_PLUS, KC_LCBR, KC_RCBR, KC_PIPE, KC_TILD,
+      KC_LSFT, XXXXXXX, XXXXXXX, CEDILLA, XXXXXXX, XXXXXXX,                      KC_LCBR, KC_EQL, KC_PLUS,  KC_BSLS, KC_RCBR, KC_TILD,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           KC_LGUI,   MO(3),  KC_SPC,     KC_ENT, _______, KC_RALT
                                       //`--------------------------'  `--------------------------'
@@ -129,7 +130,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                           KC_LGUI, _______,  KC_SPC,     KC_ENT, XXXXXXX, _______
                                       //`--------------------------'  `--------------------------'
   ),
-  [5] = LAYOUT_split_3x6_3(
+  [6] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
     KC_ESCAPE,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_1,                     _______, _______, _______, _______, _______, _______,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
@@ -156,6 +157,9 @@ oled_rotation_t oled_init_user(oled_rotation_t rotation) {
 #define L_LOWER 2
 #define L_RAISE 4
 #define L_ADJUST 8
+#define L_NUM_WM 16
+#define L_FUNCTIONS 32
+#define L_GAMING 64
 
 void oled_render_layer_state(void) {
     oled_write_P(PSTR("Layer: "), false);
@@ -168,6 +172,15 @@ void oled_render_layer_state(void) {
             break;
         case L_RAISE:
             oled_write_ln_P(PSTR("Raise"), false);
+            break;
+        case L_NUM_WM:
+            oled_write_ln_P(PSTR("Numeric and i3"), false);
+            break;
+        case L_FUNCTIONS:
+            oled_write_ln_P(PSTR("Functions"), false);
+            break;
+        case L_GAMING:
+            oled_write_ln_P(PSTR("Gaming"), false);
             break;
         case L_ADJUST:
         case L_ADJUST|L_LOWER:
