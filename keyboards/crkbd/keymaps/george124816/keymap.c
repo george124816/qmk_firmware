@@ -26,13 +26,13 @@ enum custom_keycodes {
 [_LAYER0] = LAYOUT(
      KC_NO,         KC_Q,         KC_W,         KC_E,         KC_R,    KC_T,                 KC_Y,         KC_U,         KC_I,           KC_O,            KC_P, KC_NO,
      KC_NO, LGUI_T(KC_A), LALT_T(KC_S), LSFT_T(KC_D), LCTL_T(KC_F),    KC_G,                 KC_H, LCTL_T(KC_J), LSFT_T(KC_K),   LALT_T(KC_L), LGUI_T(KC_SCLN), KC_NO,
-     KC_NO,         KC_Z, RALT_T(KC_A),         KC_C,         KC_V,    KC_B,                 KC_N,         KC_M,      KC_COMM, RALT_T(KC_DOT),         KC_SLSH, KC_NO,
+     KC_NO,         KC_Z, RALT_T(KC_X),         KC_C,         KC_V,    KC_B,                 KC_N,         KC_M,      KC_COMM, RALT_T(KC_DOT),         KC_SLSH, KC_NO,
                                    LT(6,KC_ESC), LT(1,KC_SPC), LT(5,KC_TAB),                 LT(3,KC_ENT), LT(2,KC_BSPC), LT(4,KC_DEL)),
 
 [_LAYER1] = LAYOUT(
     KC_NO, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                         KC_AGIN, KC_PSTE, KC_COPY, KC_CUT, KC_UNDO, KC_NO,
-   KC_NO, KC_LGUI, KC_LALT, KC_LSFT, KC_LCTL , KC_TRNS,                         KC_CAPS, KC_LEFT, KC_DOWN, KC_UP , KC_RGHT, KC_NO,
-    KC_NO, KC_NO  , KC_RALT, KC_TRNS, KC_TRNS, KC_TRNS,                         KC_INS , KC_HOME, KC_PGDN, KC_PGUP, KC_END, KC_NO,
+   KC_NO, KC_LGUI, KC_LALT, KC_LSFT, KC_LCTL , KC_TRNS,                         KC_LEFT, KC_DOWN, KC_UP , KC_RGHT, KC_CAPS, KC_NO,
+    KC_NO, KC_NO  , KC_RALT, KC_TRNS, KC_TRNS, KC_TRNS,                         KC_INS , KC_HOME, KC_END, KC_PGUP, KC_PGDN, KC_NO,
                              KC_TRNS, KC_TRNS, KC_TRNS,                         KC_ENT, KC_BSPC, KC_DEL),
 
 [_LAYER2] = LAYOUT(
@@ -54,8 +54,8 @@ enum custom_keycodes {
                                 KC_APP, KC_SPC, KC_TAB,                          KC_TRNS, KC_TRNS, KC_TRNS),
 
 [_LAYER5] = LAYOUT(
-    KC_NO, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                         KC_AGIN, KC_PSTE, KC_COPY, KC_CUT, KC_UNDO, KC_NO,
-    KC_NO, KC_LGUI, KC_LALT, KC_LSFT, KC_LCTL, KC_TRNS,                         KC_TRNS, KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, KC_NO,
+    KC_NO, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                         KC_AGIN, KC_PSTE, KC_COPY, KC_CUT,  KC_UNDO, KC_NO,
+    KC_NO, KC_LGUI, KC_LALT, KC_LSFT, KC_LCTL, KC_TRNS,                         KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, KC_TRNS, KC_NO,
     KC_NO, KC_TRNS, KC_RALT, KC_TRNS, KC_TRNS, KC_TRNS,                         KC_TRNS, KC_WH_L, KC_WH_D, KC_WH_U, KC_WH_R, KC_NO,
                              KC_TRNS, KC_TRNS, KC_TRNS,                         KC_BTN1, KC_BTN3, KC_BTN2),
 
