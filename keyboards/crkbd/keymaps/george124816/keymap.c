@@ -80,7 +80,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_LSFT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, KC_COPY, KC_PSTE,  KC_APP,  KC_DEL, TD(TD_ESC_CAPS),
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          KC_LGUI, MO(3),  KC_SPC,     KC_ENT,   _______,   MO(5)
+                                          KC_LGUI, MO(3),  KC_SPC,     KC_ENT,   _______, KC_RALT
                                       //`--------------------------'  `--------------------------'
   ),
 
@@ -92,7 +92,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_LSFT, XXXXXXX, XXXXXXX, CEDILLA, XXXXXXX, XXXXXXX,                      KC_LBRC, KC_EQL, KC_PLUS,  KC_BSLS, KC_RBRC, KC_TILD,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          KC_LGUI, _______,  KC_SPC,     KC_ENT,   MO(3), KC_RALT
+                                          KC_LGUI, _______,  KC_SPC,     KC_ENT,   MO(3),   MO(5) 
                                       //`--------------------------'  `--------------------------'
   ),
 
@@ -143,7 +143,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 
-
 #ifdef OLED_ENABLE
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
   if (!is_keyboard_master()) {
@@ -156,9 +155,6 @@ oled_rotation_t oled_init_user(oled_rotation_t rotation) {
 #define L_LOWER 2
 #define L_RAISE 4
 #define L_ADJUST 8
-#define L_NUM_WM 16
-#define L_FUNCTIONS 32
-#define L_GAMING 64
 
 void oled_render_layer_state(void) {
     oled_write_P(PSTR("Layer: "), false);
@@ -171,15 +167,6 @@ void oled_render_layer_state(void) {
             break;
         case L_RAISE:
             oled_write_ln_P(PSTR("Raise"), false);
-            break;
-        case L_NUM_WM:
-            oled_write_ln_P(PSTR("Numeric and i3"), false);
-            break;
-        case L_FUNCTIONS:
-            oled_write_ln_P(PSTR("Functions"), false);
-            break;
-        case L_GAMING:
-            oled_write_ln_P(PSTR("Gaming"), false);
             break;
         case L_ADJUST:
         case L_ADJUST|L_LOWER:
@@ -243,13 +230,14 @@ void oled_render_logo(void) {
     oled_write_P(crkbd_logo, false);
 }
 
-void oled_task_user(void) {
+bool oled_task_user(void) {
     if (is_keyboard_master()) {
         oled_render_layer_state();
         oled_render_keylog();
     } else {
         oled_render_logo();
     }
+    return false;
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
