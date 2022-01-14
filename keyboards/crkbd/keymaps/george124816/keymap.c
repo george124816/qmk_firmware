@@ -48,13 +48,15 @@ enum custom_keycodes {
 #define CEDILLA RAG(KC_COMM)
 // Tap Dance declarations
 enum {
-    TD_ESC_CAPS
+    TD_ESC_CAPS,
+    TD_TILD_CAPS
 };
 
 // Tap Dance definitions
 qk_tap_dance_action_t tap_dance_actions[] = {
     // Tap once for Escape, twice for Caps Lock
-    [TD_ESC_CAPS] = ACTION_TAP_DANCE_DOUBLE(KC_ESC, KC_CAPS)
+    [TD_ESC_CAPS] = ACTION_TAP_DANCE_DOUBLE(KC_ESC, KC_CAPS),
+    [TD_TILD_CAPS] = ACTION_TAP_DANCE_DOUBLE(KC_TILD, KC_CAPS)
 };
 
 
@@ -90,7 +92,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_LCTL, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  KC_F13,                      KC_LCBR, KC_MINS, KC_UNDS, KC_PIPE, KC_RCBR,  KC_GRV,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LSFT, XXXXXXX, XXXXXXX, CEDILLA, XXXXXXX, XXXXXXX,                      KC_LBRC, KC_EQL, KC_PLUS,  KC_BSLS, KC_RBRC, KC_TILD,
+      KC_LSFT, XXXXXXX, XXXXXXX, CEDILLA, XXXXXXX, XXXXXXX,                      KC_LBRC, KC_EQL, KC_PLUS,  KC_BSLS, KC_RBRC, TD(TD_TILD_CAPS),
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           KC_LGUI, _______,  KC_SPC,     KC_ENT,   MO(3),   MO(5) 
                                       //`--------------------------'  `--------------------------'
