@@ -53,7 +53,7 @@ enum {
 };
 
 // Tap Dance definitions
-qk_tap_dance_action_t tap_dance_actions[] = {
+tap_dance_action_t tap_dance_actions[] = {
     // Tap once for Escape, twice for Caps Lock
     [TD_ESC_CAPS] = ACTION_TAP_DANCE_DOUBLE(KC_ESC, KC_CAPS),
     [TD_TILD_CAPS] = ACTION_TAP_DANCE_DOUBLE(KC_TILD, KC_CAPS)
@@ -94,13 +94,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_LSFT, XXXXXXX, XXXXXXX, CEDILLA, XXXXXXX, XXXXXXX,                      KC_LBRC, KC_EQL, KC_PLUS,  KC_BSLS, KC_RBRC, TD(TD_TILD_CAPS),
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          KC_LGUI, _______,  KC_SPC,     KC_ENT,   MO(3),   MO(5) 
+                                          KC_LGUI, _______,  KC_SPC,     KC_ENT,   MO(3),   MO(5)
                                       //`--------------------------'  `--------------------------'
   ),
 
   [3] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-        RESET, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                       KC_F16,  KC_F17,  KC_F18,  KC_F19, KC_PSCR, KC_BSPC,
+      QK_BOOT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                       KC_F16,  KC_F17,  KC_F18,  KC_F19, KC_PSCR, KC_BSPC,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI, XXXXXXX,   TO(6),                      XXXXXXX, KC_MPLY, KC_MPRV, KC_MNXT, KC_VOLU, KC_MUTE,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
